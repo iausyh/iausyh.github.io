@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Page</title>
+  <style>
+    body {
+      background-color: rgb(161, 202, 241);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .download-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .download-box {
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .download-text {
+      width: 100%;
+      height: 100px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      resize: none;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      color: rgb(40, 90, 140);
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .download-btn:hover {
+      background-color: rgb(210, 230, 255);
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <section class="download-section">
+    <div class="download-box">
+      <textarea class="download-text" id="textContent" placeholder="Type something here..."></textarea>
+      <button class="download-btn" onclick="downloadText()">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" alt="Download" />
+        <span>Download</span>
+      </button>
+    </div>
+  </section>
+
+  <script>
+    function downloadText() {
+      const text = document.getElementById("textContent").value;
+      const blob = new Blob([text], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "text.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
