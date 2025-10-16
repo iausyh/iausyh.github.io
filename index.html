@@ -60,6 +60,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
 
     .download-btn img {
@@ -77,27 +78,14 @@
 <body>
   <section class="download-section">
     <div class="download-box">
-      <textarea class="download-text" id="textContent" placeholder="Type something here..."></textarea>
-      <button class="download-btn" onclick="downloadText()">
+      <textarea class="download-text" placeholder="Press Download To Download The Latest Version Of 👀Eye👀"></textarea>
+
+      <!-- The download button -->
+      <a class="download-btn" href="EyeEarlyAcces.zip" download>
         <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" alt="Download" />
-        <span>Download</span>
-      </button>
+        <span>Download Eye (Early Acces)</span>
+      </a>
     </div>
   </section>
-
-  <script>
-    function downloadText() {
-      const text = document.getElementById("textContent").value;
-      const blob = new Blob([text], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "text.txt";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    }
-  </script>
 </body>
 </html>
